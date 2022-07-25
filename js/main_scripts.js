@@ -54,15 +54,15 @@ ref.on("value", function(snapshot) {
 
     for(var i=0; i<keys.length; i++){
         var header =  '<div class="col-lg-6"> <div class="card shadow mb-4"> <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"> '+
-        '<h6 class="m-0 font-weight-bold text-primary">'+keys[i]+'</h6> <div class="dropdown no-arrow"> <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
+        '<h6 class="m-0 font-weight-bold text-primary">'+keys[i]+'</h6> <div class="dropdown no-arrow">Options <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
         '<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i> </a> <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"  aria-labelledby="dropdownMenuLink">'+
         '<div class="dropdown-header">Settings:</div> <a class="dropdown-item" href="#">Add New Menu</a> <a class="dropdown-item" href="#">Save Categories</a> <a class="dropdown-item" href="#">Delete Categories</a> <a class="dropdown-item" href="#">Change Name</a>'+
         '</div> </div> </div><div id="datas_menus"></div>' 
 
         var insider = ""
         for(var k=0; k<datas[i].length; k++){
-            insider += '<div class="card-body">  <input class="form-control" type="text" placeholder="'+datas[i][k].name+
-            '"><br><input class="form-control" type="text" placeholder="'+datas[i][k].details+'"><br><input class="form-control" type="number" placeholder="'+
+            insider += '<div class="card-body">  <input class="form-control" type="text" value="'+datas[i][k].name+
+            '"><br><input class="form-control" type="text" value="'+datas[i][k].details+'"><br><input class="form-control" type="number" value="'+
             datas[i][k].price+'"><br><button type="button" class="btn btn-danger">Delete Item</button></div><hr>'
         }
         interface.innerHTML += header + insider +'</div> </div>'
