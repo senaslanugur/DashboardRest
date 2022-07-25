@@ -52,20 +52,30 @@ ref.on("value", function(snapshot) {
     // console.log(keys)
     // console.log(Object.values(test))
 
-    for(var i=0; i<keys.length; i++){
-        var header =  '<div class="col-lg-6"> <div class="card shadow mb-4"> <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"> '+
-        '<h6 class="m-0 font-weight-bold text-primary">'+keys[i]+'</h6> <div class="dropdown no-arrow">Options <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
-        '<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i> </a> <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"  aria-labelledby="dropdownMenuLink">'+
-        '<div class="dropdown-header">Settings:</div> <a class="dropdown-item" href="#">Add New Menu</a> <a class="dropdown-item" href="#">Save Categories</a> <a class="dropdown-item" href="#">Delete Categories</a> <a class="dropdown-item" href="#">Change Name</a>'+
-        '</div> </div> </div><div id="datas_menus"></div>' 
+    //burası card.html ıcın
+    // for(var i=0; i<keys.length; i++){
+    //     var header =  '<div class="col-lg-6"> <div class="card shadow mb-4"> <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"> '+
+    //     '<h6 class="m-0 font-weight-bold text-primary">'+keys[i]+'</h6> <div class="dropdown no-arrow">Save and Other Options <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
+    //     '<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i> </a> <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"  aria-labelledby="dropdownMenuLink">'+
+    //     '<div class="dropdown-header">Settings:</div> <a class="dropdown-item" href="#">Add New Menu</a> <a class="dropdown-item" href="#">Save Categories</a> <a class="dropdown-item" href="#">Delete Items</a> <a class="dropdown-item" href="#">Delete Categories</a> <a class="dropdown-item" href="#">Change Categories Name</a>'+
+    //     '</div> </div> </div><div id="datas_menus"></div>' 
 
-        var insider = ""
+    //     var insider = ""
+    //     for(var k=0; k<datas[i].length; k++){
+    //         insider += '<div class="card-body">  <input class="form-control" type="text" value="'+datas[i][k].name+
+    //         '" id="'+datas[i][k].name+'"><br><input class="form-control" type="text" value="'+datas[i][k].details+'" id="'+datas[i][k].details+'"><br><input class="form-control" type="number" value="'+
+    //         datas[i][k].price+'" id="'+datas[i][k].price+'"></div><hr>'
+    //     }
+    //     interface.innerHTML += header + insider +'</div> </div>'
+    // }
+    //card html son
+
+    var interface_2 = document.getElementById("datas_menu")
+    for(var i=0; i<keys.length; i++){
         for(var k=0; k<datas[i].length; k++){
-            insider += '<div class="card-body">  <input class="form-control" type="text" value="'+datas[i][k].name+
-            '"><br><input class="form-control" type="text" value="'+datas[i][k].details+'"><br><input class="form-control" type="number" value="'+
-            datas[i][k].price+'"><br><button type="button" class="btn btn-danger">Delete Item</button></div><hr>'
+            interface_2.innerHTML += '<tr> <td>'+keys[i]+'</td><td>'+datas[i][k].name+'</td><td>'+datas[i][k].details+'</td><td>'+datas[i][k].price+'</td><td>'+
+            '<a href="#" class="view" data-toggle="tooltip"><i class="fas fa-edit"></i></a>&nbsp;&nbsp; <a href="#" class="edit" data-toggle="tooltip"><i class="fas fa-remove-format"></i></a> </td></tr>'
         }
-        interface.innerHTML += header + insider +'</div> </div>'
     }
 }, function (error) {
     console.log("Error: " + error.code);

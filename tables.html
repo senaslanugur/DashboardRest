@@ -25,6 +25,7 @@
 
 <body id="page-top">
 
+ 
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -107,8 +108,6 @@
 
 
         </ul>
-        <!-- End of Sidebar -->
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -117,17 +116,84 @@
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow border-bottom-primary">
-                        <h1 class="h3 mb-0 text-gray-800"> Restaurant Managment Dashboard</h1>
-                </nav>
+                    <h1 class="h3 mb-0 text-gray-800"> Restaurant Menu Settings Page</h1>
+            </nav>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                
-                    <iframe  title="Restaurant Overview" allow="fullscreen" src="https://senaslanugur.github.io/Restourant_2" width="100%" height="100%"></iframe>
+                <div class="container-fluid">
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                                <h1 class="h3 mb-0 text-gray-800">Categories, Menu, Detail and Price</h1>
+                            </div>
+                            <button type="button" class="btn btn-success">Add New Categories</button> &nbsp;&nbsp;
+                            <button type="button" class="btn btn-info">Add Nem Menu to Categories</button> &nbsp;&nbsp;
+                            <button type="button" class="btn btn-warning">Delete Categories</button>
+                        </div>
+                        
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Categories</th>
+                                            <th>Name</th>
+                                            <th>Details</th>
+                                            <th>Price</th>
+                                            <th>Options</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Categories</th>
+                                            <th>Name</th>
+                                            <th>Details</th>
+                                            <th>Price</th>
+                                            <th>Options</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody id="datas_menu">
+                                        <!-- <tr>
+                                            <td>Yuri Berry</td>
+                                            <td>Chief Marketing Officer (CMO)</td>
+                                            <td>New York</td>
+                                            <td>40</td>
+                                            <td>
+                                                <a href="#" class="view" data-toggle="tooltip"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;
+                                                <a href="#" class="edit" data-toggle="tooltip"><i class="fas fa-remove-format"></i></a>
+                                            </td>
+                                            </tr>
+                                        <tr>
+                                            <td>Caesar Vance</td>
+                                            <td>Pre-Sales Support</td>
+                                            <td>New York</td>
+                                            <td>21</td>
+                                        </tr> -->
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
 
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; USoft 2022</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
         </div>
         <!-- End of Content Wrapper -->
 
@@ -148,7 +214,8 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+    <script src="js/main_scripts.js"></script>
 </body>
 
 </html>
