@@ -74,9 +74,29 @@ ref.on("value", function(snapshot) {
     for(var i=0; i<keys.length; i++){
         for(var k=0; k<datas[i].length; k++){
             interface_2.innerHTML += '<tr> <td>'+keys[i]+'</td><td>'+datas[i][k].name+'</td><td>'+datas[i][k].details+'</td><td>'+datas[i][k].price+'</td><td>'+
-            '<a href="#" class="view" data-toggle="tooltip"><i class="fas fa-edit"></i></a>&nbsp;&nbsp; <a href="#" class="edit" data-toggle="tooltip"><i class="fas fa-remove-format"></i></a> </td></tr>'
+            '<i class="fas fa-edit" style="color:green;" onClick=test()></i>&nbsp;&nbsp; <i class="fas fa-remove-format" style="color:red;" onClick=test2()></i> </td></tr>'
         }
     }
 }, function (error) {
     console.log("Error: " + error.code);
 });
+function test(){
+    Swal.fire({
+        title: 'Sweet!',
+        text: 'Modal with a custom image.',
+        imageUrl: 'https://unsplash.it/400/200',
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+      })
+}
+function test2(){
+    Swal.fire({
+        title: 'Sweet!',
+        text: 'Modal with a custom image.',
+        imageUrl: 'https://unsplash.it/400/200',
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+      })
+}
