@@ -74,20 +74,28 @@ ref.on("value", function(snapshot) {
     for(var i=0; i<keys.length; i++){
         for(var k=0; k<datas[i].length; k++){
             interface_2.innerHTML += '<tr> <td>'+keys[i]+'</td><td>'+datas[i][k].name+'</td><td>'+datas[i][k].details+'</td><td>'+datas[i][k].price+'</td><td>'+
-            '<i class="fas fa-edit" style="color:green;" onClick=test()></i>&nbsp;&nbsp; <i class="fas fa-remove-format" style="color:red;" onClick=test2()></i> </td></tr>'
+            '<i class="fas fa-edit" style="color:green;" id="'+keys[i] +'**'+ datas[i][k].name+'**'+datas[i][k].details+'**'+datas[i][k].price+'" onClick=test(this)></i>&nbsp;&nbsp; <i class="fas fa-remove-format" id="'+keys[i] +'**'+ datas[i][k].name+'**'+datas[i][k].details+'**'+datas[i][k].price+'" style="color:red;" onClick=test2()></i> </td></tr>'
         }
     }
 }, function (error) {
     console.log("Error: " + error.code);
 });
-function test(){
+function test(d){
+    var test = d.id
+    // alert(test.split("**")[2])
+    // alert(d.id)
     Swal.fire({
-        title: 'Sweet!',
-        text: 'Modal with a custom image.',
+        title: test.split("**")[0]+ ', '+test.split("**")[1],
+        html: '<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name" value="'+test.split("**")[1]+'"> <br>'+
+            '<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Details" value="'+test.split("**")[2]+'"> <br>'+
+            '<input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Price" value="'+test.split("**")[3]+'">',
         imageUrl: 'https://unsplash.it/400/200',
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: 'Custom image',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, Save it!',
+        cancelButtonText: 'No, cancel!',
       })
 }
 function test2(){
