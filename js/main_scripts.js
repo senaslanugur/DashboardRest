@@ -40,7 +40,6 @@ var database = firebase.database();
 //     });
 // });
 var ref = firebase.database().ref();
-
 ref.on("value", function(snapshot) {
     var interface = document.getElementById("data_firebase")
     // console.log(snapshot.val());
@@ -74,22 +73,23 @@ ref.on("value", function(snapshot) {
     for(var i=0; i<keys.length; i++){
         for(var k=0; k<datas[i].length; k++){
             interface_2.innerHTML += '<tr> <td>'+keys[i]+'</td><td>'+datas[i][k].name+'</td><td>'+datas[i][k].details+'</td><td>'+datas[i][k].price+'</td><td>'+
-            '<i class="fas fa-edit" style="color:green;" id="'+keys[i] +'**'+ datas[i][k].name+'**'+datas[i][k].details+'**'+datas[i][k].price+'**'+i+'" onClick=update(this)></i>&nbsp;&nbsp;' +
-            '<i class="fas fa-remove-format" style="color:red;"  id="'+keys[i] +'**'+ datas[i][k].name+'**'+datas[i][k].details+'**'+datas[i][k].price+'**'+i+'" onClick=remove(this)></i> </td></tr>'
+            '<i class="fas fa-edit" style="color:green;" id="'+keys[i] +'**'+ datas[i][k].name+'**'+datas[i][k].details+'**'+datas[i][k].price+'**'+k+'" onClick=update(this)></i>&nbsp;&nbsp;' +
+            '<i class="fas fa-remove-format" style="color:red;"  id="'+keys[i] +'**'+ datas[i][k].name+'**'+datas[i][k].details+'**'+datas[i][k].price+'**'+k+'" onClick=remove(this)></i> </td></tr>'
         }
     }
 }, function (error) {
     console.log("Error: " + error.code);
 });
+
 function update(d){
     var test = d.id
     // alert(test.split("**")[2])
     // alert(d.id)
     Swal.fire({
         title: test.split("**")[0]+ ', '+test.split("**")[1],
-        html: '<input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name" value="'+test.split("**")[1]+'"> <br>'+
-            '<input type="text" class="form-control" id="details" aria-describedby="emailHelp" placeholder="Details" value="'+test.split("**")[2]+'"> <br>'+
-            '<input type="number" class="form-control" id="price" aria-describedby="emailHelp" placeholder="Price" value="'+test.split("**")[3]+'">',
+        html: '<input type="text" class="form-control" id="name" aria-describedby="Name" placeholder="Name" value="'+test.split("**")[1]+'"> <br>'+
+            '<input type="text" class="form-control" id="details" aria-describedby="Details" placeholder="Details" value="'+test.split("**")[2]+'"> <br>'+
+            '<input type="number" class="form-control" id="price" aria-describedby="Price" placeholder="Price" value="'+test.split("**")[3]+'">',
         imageUrl: 'https://unsplash.it/400/200',
         imageWidth: 400,
         imageHeight: 200,
@@ -124,9 +124,10 @@ function update(d){
 }
 function remove(d){
     var test = d.id
+    console.log(test)
     Swal.fire({
         title: test.split("**")[0]+ ', '+test.split("**")[1],
-        text: 'Are you sure for delete this menu from categories ?',
+        text: 'Are you sure you want to delete this menu from categories?',
         imageUrl: 'https://unsplash.it/400/200',
         imageWidth: 400,
         imageHeight: 200,
@@ -136,8 +137,9 @@ function remove(d){
       }).then((result) => {
         if (result.isConfirmed) {
             var path = test.split("**")[0] + "/" + test.split("**")[4]
-            var to_remove = firebase.database().ref(path).remove();
-
+            console.log(test.split("**")[4])
+            var to_remove = firebase.database().ref(path);
+            to_remove.remove()
         }
 
 
