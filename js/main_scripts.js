@@ -122,7 +122,22 @@ function remove(d){
                 location.reload();
             })
         }
-
-
       })
+}
+function newcategory(){
+
+    alert("clicked new category ")
+
+}
+
+function newmenu(){
+
+    alert("clicked new menu ")
+
+}
+
+function deletecategory(){
+
+    alert("clicked delete")
+
 }
