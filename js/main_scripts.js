@@ -10,36 +10,10 @@ var config = {
 
 firebase.initializeApp(config);
 var database = firebase.database();
-// var ref = firebase.database().ref().child('Wrapler');
 
-// var data = [    
-//     {
-//     "name": "Kazandibi",
-//     "details": "Kazandibi",
-//     "price": 11.2
-//     },
-//     {
-//     "name": "Sütlaç",
-//     "details": "Sütlaç",
-//     "price": 11.2
-//     },
-//     {
-//     "name": "Puding",
-//     "details": "Çikolata, Çilek, Muz",
-//     "price": 11.2
-//     }
-// ]
-// ref.set(data, function () {
-//     console.log("data has been inserted");
-// })
-// ref.on("value", function(snapshot) {
-//     snapshot.forEach(function(childSnapshot) {
-//     var childData = childSnapshot.val();
-//     var id=childData.id;
-//     console.log(childData);
-//     });
-// });
 var ref = firebase.database().ref();
+var local_storage = []
+
 ref.on("value", function(snapshot) {
     var interface = document.getElementById("data_firebase")
     // console.log(snapshot.val());
@@ -48,6 +22,7 @@ ref.on("value", function(snapshot) {
     // console.log(test)
     var keys = Object.keys(test);
     var datas =  Object.values(test) 
+    local_storage = test
     // console.log(keys)
     // console.log(Object.values(test))
 
@@ -87,7 +62,7 @@ function update(d){
     // alert(d.id)
     Swal.fire({
         title: test.split("**")[0]+ ', '+test.split("**")[1],
-        html: '<input type="text" class="form-control" id="name" aria-describedby="Name" placeholder="Name" value="'+test.split("**")[1]+'"> <br>'+
+        html:'<input type="text" class="form-control" id="name" aria-describedby="Name" placeholder="Name" value="'+test.split("**")[1]+'"> <br>'+
             '<input type="text" class="form-control" id="details" aria-describedby="Details" placeholder="Details" value="'+test.split("**")[2]+'"> <br>'+
             '<input type="number" class="form-control" id="price" aria-describedby="Price" placeholder="Price" value="'+test.split("**")[3]+'">',
         imageUrl: 'https://unsplash.it/400/200',
@@ -124,7 +99,12 @@ function update(d){
 }
 function remove(d){
     var test = d.id
-    console.log(test)
+    var keys = test.split("**")[0]
+
+     local_storage = (JSON.stringify(local_storage))
+     local_storage = (JSON.parse(local_storage))
+     var index = parseInt(test.split("**")[4])
+
     Swal.fire({
         title: test.split("**")[0]+ ', '+test.split("**")[1],
         text: 'Are you sure you want to delete this menu from categories?',
@@ -136,10 +116,11 @@ function remove(d){
         cancelButtonText: 'No, cancel!'
       }).then((result) => {
         if (result.isConfirmed) {
-            var path = test.split("**")[0] + "/" + test.split("**")[4]
-            console.log(test.split("**")[4])
-            var to_remove = firebase.database().ref(path);
-            to_remove.remove()
+            local_storage[keys].splice(index,1)
+            var ref = firebase.database().ref()
+            ref.set(local_storage, function () {
+                location.reload();
+            })
         }
 
 
