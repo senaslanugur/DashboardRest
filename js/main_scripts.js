@@ -13,7 +13,7 @@ var database = firebase.database();
 
 var ref = firebase.database().ref();
 var local_storage = []
-
+var keys2 =[]
 ref.on("value", function(snapshot) {
     var interface = document.getElementById("data_firebase")
     // console.log(snapshot.val());
@@ -21,6 +21,7 @@ ref.on("value", function(snapshot) {
     var test = snapshot.val()
     // console.log(test)
     var keys = Object.keys(test);
+    keys2=keys
     var datas =  Object.values(test) 
     local_storage = test
     // console.log(keys)
@@ -119,20 +120,74 @@ function remove(d){
             local_storage[keys].splice(index,1)
             var ref = firebase.database().ref()
             ref.set(local_storage, function () {
+                Swal.fire("Deleted", '', 'info')
                 location.reload();
             })
         }
       })
 }
 
-function newcategory(){
-    alert("clicked new category ")
-}
+
 
 function newmenu(){
-    alert("clicked new menu ")
+    console.log(keys2)
+    var drop = '<select class="form-select btn btn-warning " aria-label="Please Select Categories" id="categories">'+
+                '<option selected>Please Select Categories</option>'
+    for(var i=0;i<keys2.length;i++){
+        drop += '<option value="'+keys2[i]+'">'+keys2[i]+'</option>'
+    }
+    drop += '</select>'
+
+    Swal.fire({
+        title: "Add New Menu to Category",
+        html: drop +'<br><br>'+
+            '<input type="text" class="form-control" id="name" aria-describedby="Name" placeholder="Name"> <br>'+
+            '<input type="text" class="form-control" id="details" aria-describedby="Details" placeholder="Details"> <br>'+
+            '<input type="number" class="form-control" id="price" aria-describedby="Price" placeholder="Price" >',
+        imageUrl: 'https://unsplash.it/400/200',
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, Save it!',
+        cancelButtonText: 'No, cancel!',
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            local_storage = (JSON.stringify(local_storage))
+            local_storage = (JSON.parse(local_storage))
+
+            var select = document.getElementById("categories");
+            var categories = select.options[select.selectedIndex].value;
+            var name = document.getElementById("name").value
+            var details = document.getElementById("details").value
+            var price = document.getElementById("price").value
+            var path = categories + "/"
+            var to_save = firebase.database().ref();
+            var data =     
+                {
+                "name": name,
+                "details": details,
+                "price": parseFloat(price)
+                }
+            
+            local_storage[categories].push(data)
+            console.log(local_storage)
+            to_save.set(local_storage, function () {
+                Swal.fire("Added", '', 'info')
+                location.reload();
+            })
+
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info') 
+        }
+      })
+}
+
+function newcategory(){
+    Swal.fire('developing...', '', 'info') 
 }
 
 function deletecategory(){
-    alert("clicked delete")
+    Swal.fire('developing...', '', 'info') 
 }

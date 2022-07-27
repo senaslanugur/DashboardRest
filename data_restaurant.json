@@ -1,0 +1,60 @@
+{
+  "Salatalar": [
+    {
+      "name": "Sezar Salata",
+      "details": "Izgara Bonfile, Yeşillik, Sezar Sos",
+      "price": 68.8
+    },
+    {
+      "name": "Ton Balıklı Salata",
+      "details": "Ton Balıgı, Kırmızı Köz Biberi, Kapari, Turşu, Yeşillik",
+      "price": 72
+    },
+    {
+      "name": "Hellim Peynirli Salata",
+      "details": "Izgara'da Kızartılmış Hellim, Kırmızı Köz Biber, Yeşillik",
+      "price": 68.8
+    }
+  ],
+  "Makarnalar": [
+    {
+      "name": "Fettucini Alfredo",
+      "details": "Makarna, Jülyen Tavuk, Mantar, Kaşar, Krema",
+      "price": 68.8
+    },
+    {
+      "name": "Penne Arabiatta",
+      "details": "Makarna, Zeytin, Şefim Özel Domates Sos, Acı Sos",
+      "price": 68.8
+    }
+  ],
+  "Tavuk": [
+    {
+      "name": "Barbekü Soslu Tavuk",
+      "details": "Julyen Tavuk, Julyen Biber, Mısır, Barbekü Sos, Makarna, Salata, Rol Ekmek",
+      "price": 81.6
+    },
+    {
+      "name": "Meksika Soslu Tavuk",
+      "details": "Julyen Tavuk, Julyen Biber, Mısır, Mantar, Acı Sos, Meksika Fasülye Makarna, Salata, Rol Ekmek",
+      "price": 81.6
+    }
+  ],
+  "Tatlılar": [
+    {
+      "name": "Kazandibi",
+      "details": "Kazandibi",
+      "price": 11.2
+    },
+    {
+      "name": "Sütlaç",
+      "details": "Sütlaç",
+      "price": 11.2
+    },
+    {
+      "name": "Puding",
+      "details": "Çikolata, Çilek, Muz",
+      "price": 11.2
+    }
+  ]
+}
