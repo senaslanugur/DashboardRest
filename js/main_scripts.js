@@ -185,7 +185,51 @@ function newmenu(){
 }
 
 function newcategory(){
-    Swal.fire('developing...', '', 'info') 
+
+    Swal.fire({
+        title: "Create New Categories",
+        html:'<input type="text" class="form-control" id="cat" aria-describedby="Categories" placeholder="Categories Name"> <br>'+
+            '<input type="text" class="form-control" id="name" aria-describedby="Name" placeholder="First Menu Name"> <br>'+
+            '<input type="text" class="form-control" id="details" aria-describedby="Details" placeholder="Details"> <br>'+
+            '<input type="number" class="form-control" id="price" aria-describedby="Price" placeholder="Price" >',
+        imageUrl: 'https://unsplash.it/400/200',
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, Save it!',
+        cancelButtonText: 'No, cancel!',
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            local_storage = (JSON.stringify(local_storage))
+            local_storage = (JSON.parse(local_storage))
+
+            var cate = document.getElementById("cat").value;
+            console.log(cate)
+            // var name = document.getElementById("name").value
+            // var details = document.getElementById("details").value
+            // var price = document.getElementById("price").value
+ 
+            // var to_save = firebase.database().ref();
+            // var data =
+            //     {
+            //     "name": name,
+            //     "details": details,
+            //     "price": parseFloat(price)
+            //     }
+            
+            // local_storage[categories] = data
+            // console.log(local_storage)
+            // to_save.set(local_storage, function () {
+            //     Swal.fire("Added new categories", '', 'info')
+            //     location.reload();
+            // })
+
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info') 
+        }
+      })
 }
 
 function deletecategory(){
