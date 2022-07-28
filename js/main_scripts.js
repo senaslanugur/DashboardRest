@@ -131,7 +131,7 @@ function remove(d){
 
 function newmenu(){
     console.log(keys2)
-    var drop = '<select class="form-select btn btn-warning " aria-label="Please Select Categories" id="categories">'+
+    var drop = '<select class="form-select btn btn-info " aria-label="Please Select Categories" id="categories">'+
                 '<option selected>Please Select Categories</option>'
     for(var i=0;i<keys2.length;i++){
         drop += '<option value="'+keys2[i]+'">'+keys2[i]+'</option>'
