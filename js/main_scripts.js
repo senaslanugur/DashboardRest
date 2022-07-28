@@ -208,25 +208,25 @@ function newcategory(){
             local_storage = (JSON.parse(local_storage))
 
             var cate = document.getElementById("cat").value;
-            console.log(cate)
-            // var name = document.getElementById("name").value
-            // var details = document.getElementById("details").value
-            // var price = document.getElementById("price").value
+            var name = document.getElementById("name").value
+            var details = document.getElementById("details").value
+            var price = document.getElementById("price").value
     
-            // var to_save = firebase.database().ref();
-            // var data =
-            //     {
-            //     "name": name,
-            //     "details": details,
-            //     "price": parseFloat(price)
-            //     }
+            var to_save = firebase.database().ref();
+            var data =[
+                {
+                "name": name,
+                "details": details,
+                "price": parseFloat(price)
+                }
+            ]
             
-            // local_storage[categories] = data
-            // console.log(local_storage)
-            // to_save.set(local_storage, function () {
-            //     Swal.fire("Added new categories", '', 'info')
-            //     location.reload();
-            // })
+            local_storage[cate] = data
+            console.log(local_storage)
+            to_save.set(local_storage, function () {
+                Swal.fire("Added new categories", '', 'info')
+                location.reload();
+            })
 
         } else if (result.isDenied) {
             Swal.fire('Changes are not saved', '', 'info') 
