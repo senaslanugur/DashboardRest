@@ -50,7 +50,7 @@ ref.on("value", function(snapshot) {
         for(var k=0; k<datas[i].length; k++){
             interface_2.innerHTML += '<tr> <td>'+keys[i]+'</td><td>'+datas[i][k].name+'</td><td>'+datas[i][k].details+'</td><td>'+datas[i][k].price+'</td><td>'+
             '<i class="fas fa-edit" style="color:green;" id="'+keys[i] +'**'+ datas[i][k].name+'**'+datas[i][k].details+'**'+datas[i][k].price+'**'+k+'" onClick=update(this)></i>&nbsp;&nbsp;' +
-            '<i class="fas fa-remove-format" style="color:red;"  id="'+keys[i] +'**'+ datas[i][k].name+'**'+datas[i][k].details+'**'+datas[i][k].price+'**'+k+'" onClick=remove(this)></i> </td></tr>'
+            '<i class="fas fa-trash-alt" style="color:red;"  id="'+keys[i] +'**'+ datas[i][k].name+'**'+datas[i][k].details+'**'+datas[i][k].price+'**'+k+'" onClick=remove(this)></i> </td></tr>'
         }
     }
 }, function (error) {
