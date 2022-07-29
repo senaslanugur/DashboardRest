@@ -118,12 +118,18 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow border-bottom-primary">
                         <h1 class="h3 mb-0 text-gray-800"> Restaurant Managment Dashboard</h1>
+                        
                 </nav>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                
-                    <iframe  title="Restaurant Overview" allow="fullscreen" src="https://senaslanugur.github.io/Restourant_2/index_phone.html" width="100%" height="100%"></iframe>
+                    <button type="button" class="btn btn-success" onclick="menuI()">Menu-I</button>
+                    <button type="button" class="btn btn-warning"  onclick="menuII()">Menu-II</button>
+                    <button type="button" class="btn btn-info"  onclick="menuIII()">Menu-III</button>
+                    <div id="frame_overview"  style="width:100%; height:100%">
+                        <iframe  title="Restaurant Overview" allow="fullscreen" src="https://senaslanugur.github.io/Restourant_2/index_phone.html" width="100%" height="100%"></iframe>
+                    </div>
+                    
 
             </div>
             <!-- End of Main Content -->
@@ -148,7 +154,22 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script>
+        function menuI(){
+            var frame_overview = document.getElementById("frame_overview")
+            frame_overview.innerHTML = '<iframe  title="Restaurant Overview" allow="fullscreen" src="https://senaslanugur.github.io/Restourant_2/index_phone.html" width="100%" height="100%"></iframe>'
+            
+        }
+        function menuII(){
+            var frame_overview = document.getElementById("frame_overview")
+            frame_overview.innerHTML = '<iframe  title="Restaurant Overview" allow="fullscreen" src="https://senaslanugur.github.io/Restourant_2/Menu-III/index_phone.html" width="100%" height="100%"></iframe>'
+        }
+        function menuIII(){
+            var frame_overview = document.getElementById("frame_overview")
+            frame_overview.innerHTML = '<iframe  title="Restaurant Overview" allow="fullscreen" src="https://senaslanugur.github.io/Restourant_2/Menu-IV/index_phone.html" width="100%" height="100%"></iframe>'
+        }
 
+    </script>
 </body>
 
 </html>
